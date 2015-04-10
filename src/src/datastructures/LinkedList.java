@@ -115,6 +115,7 @@ public class LinkedList<E> implements Iterable<E>{
         
         enumerator.remove();
                 
+        //  program should never catch a SelfLinkException
         if(destination == 0){
             try {
                 first.insertBefore(temp);   
