@@ -1,5 +1,5 @@
 /*
- * 
+ *  Stack class for stack data structure
  */
 package src.datastructures;
 
