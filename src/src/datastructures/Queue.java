@@ -51,6 +51,11 @@ public class Queue<E> implements Serializable{
         return list.getLastElement();
     }
     
+    public void clear()
+    {
+        list.clear();
+    }
+    
     public boolean isEmpty()
     {
         return list.isEmpty();
