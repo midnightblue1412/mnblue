@@ -22,12 +22,39 @@ public class BinarySearchTree<K, V> {
         this.comparator = comparator;
     }
     
-    public void insert(K key)
+    private boolean isLeaf(BinaryNode<K, V> node)
     {
+        return node.leftChild == null && node.rightChild == null;
+    }
+    
+    public void insert(K key) throws Exception
+    {
+        BinaryNode<K, V> temp = new BinaryNode<>(key, null);
+        
         if(root == null){
-            root = new BinaryNode<>(key, null);
-        }else if(comparator.compare(root._key, key) < 0){
-            
+            root = temp;
+            return;
+        }
+        
+        BinaryNode<K, V> current = root;
+        while(!isLeaf(current)){
+            if(comparator.compare(current._key, key) > 0 && current.hasLeftChild()){
+                current = current.leftChild;
+            }else if(comparator.compare(current._key, key) < 0 && current.hasRightChild()){
+                current = current.rightChild;
+            }else if(comparator.compare(current._key, key) == 0){
+                throw new Exception("Cannot insert duplicate key!");
+            }else{
+                break;
+            }
+        }
+        
+        if(comparator.compare(current._key, key) > 0){
+            current.leftChild = temp;
+        }else if(comparator.compare(current._key, key) < 0){
+            current.rightChild = temp;
+        }else{
+            throw new Exception("Cannot insert duplicate key! (this shouldn't be thrown...)");            
         }
     }
 }

@@ -39,4 +39,14 @@ public class BinaryNode<K, V> {
     {
         _value = value;
     }
+    
+    public boolean hasLeftChild()
+    {
+        return leftChild != null;
+    }
+    
+    public boolean hasRightChild()
+    {
+        return rightChild != null;
+    }
 }
